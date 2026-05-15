@@ -1,0 +1,22 @@
+{
+  "name": "fitman-backend",
+  "version": "1.0.0",
+  "description": "Backend de la aplicación FitMan",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Pablo Gutiérrez",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.8.0",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.3.6"
+  }
+}
