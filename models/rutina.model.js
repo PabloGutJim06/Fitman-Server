@@ -18,13 +18,18 @@ export const rutinaSchema = z.object({
     calorias: z.number().positive().optional(),
     duracion_total: z.number().nonnegative().optional(),
     ejercicios: z.array(ejercicioSchema).min(1, { message: "La rutina debe contener al menos un ejercicio" }),
+    colaboradores: z.array(z.object({
+        usuario_id: z.string(),
+        nombre: z.string(),
+        email: z.string(),
+        puede_editar: z.boolean().default(false),
+    })).optional().default([]),
+    colaboradores_ids: z.array(z.string()).optional().default([]),
 });
 
 export const rutinaUpdateSchema = z.object({
     rutina_nombre: z.string().min(1, { message: "El nombre no puede estar vacío" }).optional(),
     calorias: z.number().positive().optional(),
     duracion_total: z.number().nonnegative().optional(),
-    // Si se envían ejercicios en el PATCH, siguen necesitando al menos uno
     ejercicios: z.array(ejercicioSchema).min(1, { message: "Si actualizas ejercicios, debe haber al menos uno" }).optional(),
 });
-// Nota: usuario_id e id nunca se permiten actualizar desde el cliente — no están en este schema

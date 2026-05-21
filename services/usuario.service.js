@@ -20,7 +20,6 @@ export const createUsuario = async (datosUsuario) => {
     const usuarioConHash = { ...datosUsuario, password: hashedPassword };
     const id = await crearUsuario(usuarioConHash);
 
-    // Nunca devolvemos el password al cliente, ni el hasheado
     const { password, ...usuarioSinPassword } = usuarioConHash;
     return { id, ...usuarioSinPassword };
 };
@@ -34,12 +33,12 @@ export const loginUsuario = async (email, password) => {
 
     const passwordValida = await bcrypt.compare(password, usuario.password);
     if (!passwordValida) {
-        throw new Error("Credenciales inválidas"); // mismo mensaje intencionadamente
+        throw new Error("Credenciales inválidas");
     }
 
     const payload = { id: usuario.id, email: usuario.email };
     
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "7d" });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "100d" });
 
     return {
         token,

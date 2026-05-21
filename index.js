@@ -5,6 +5,8 @@ import express from 'express';
 import rutinaRoutes from "./routes/rutina.routes.js";
 import usuarioRoutes from "./routes/usuario.routes.js";
 import registroRoutes from "./routes/registro.routes.js";
+import ejercicioRoutes from "./routes/ejercicio.routes.js";
+import chatRoutes from "./routes/chat.routes.js";
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -14,6 +16,8 @@ app.use(express.json());
 app.use("/api/rutinas", rutinaRoutes);
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/registros", registroRoutes);
+app.use("/api/ejercicios", ejercicioRoutes);
+app.use("/api/chat", chatRoutes);
 
 app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok' });

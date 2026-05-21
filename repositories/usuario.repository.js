@@ -29,8 +29,6 @@ export const obtenerUsuarios = async () => {
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
-// GET — buscar por email para login y verificación de duplicados
-// Devuelve null si no existe — es un caso esperado, no un error
 export const buscarPorEmail = async (email) => {
     const snapshot = await db.collection("usuarios")
         .where("email", "==", email)

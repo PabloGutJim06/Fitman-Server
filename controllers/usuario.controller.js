@@ -32,7 +32,7 @@ export const login = async (req, res, next) => {
         const resultadoLogin = await loginUsuario(email, password);
         res.status(200).json({ message: "Login exitoso", ...resultadoLogin });
     } catch (error) {
-        // "Credenciales inválidas" no debe escalar al handler global como un 500.
+        // "Credenciales inválidas"
         res.status(401).json({ error: error.message });
     }
 };
