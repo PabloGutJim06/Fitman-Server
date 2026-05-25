@@ -1,0 +1,4 @@
+node_modules/
+.env
+firebase-key.json
+fitman-backend-firebase-adminsdk-fbsvc-18cf9cc881.json
